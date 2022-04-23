@@ -1,0 +1,37 @@
+
+<div class="flex flex-wrap  justify-center mt-8 text-pink-500">
+  <div class="w-full max-w-md px-4">
+    <div class="bg-white border-t border-b sm:rounded sm:border shadow">
+      <div class="border-b">
+        <div class="flex justify-between px-6 -mb-px">
+          <h3 class="py-4 text-2xl font-semibold flex flex-col">
+            Details sur l'auteur :
+          </h3>
+        </div>
+      </div>
+      <div class="w-full">
+        <form class="rounded px-8 pt-6 pb-8 mb-4">
+          <div class="mb-4">
+            <label class="block text-gray-700 text-xl font-bold mb-2">
+              Nom de l'auteur
+            </label>
+            <span class="text-black text-lg">{{auteur.maisonedition}}</span>
+          </div>
+          <div class="mb-6">
+            <label class="block text-gray-700 text-xl font-bold mb-2">
+              maison Editioon
+            </label>
+            <span class="text-black text-lg">{{auteur.name}}</span>          </div>
+          <div class="flex items-center justify-center">
+            <button (click)="back()"
+            class="bg-pink-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button"
+            >
+              RETOUR
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

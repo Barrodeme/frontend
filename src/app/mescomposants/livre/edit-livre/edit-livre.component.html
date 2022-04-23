@@ -1,0 +1,55 @@
+
+<div class="flex flex-wrap  justify-center mt-8 text-pink-500">
+  <div class="w-full max-w-md px-4">
+    <div class="bg-white border-t border-b sm:rounded sm:border shadow">
+      <div class="border-b">
+        <div class="flex  flex-col px-6 -mb-px">
+          <h3 class="py-4 text-2xl font-semibold text-center">
+            Editer le livre de l'auteur
+          </h3>
+          <span class="text-black font-bold text-center ml-2 text-xl">{{name_auteur| uppercase}}</span>
+        </div>
+      </div>
+      <div class="w-full">
+        <form  [formGroup]="form" class="rounded px-8 pt-6 pb-8 mb-4">
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2">
+              Titre du livre : <span class="text-red-500 font-bold ml-2 text-lg">{{titre}}</span>
+            </label>
+            <input type="text" formControlName="titre" autocomplete="off" type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+          </div>
+          <div class="mb-6">
+            <label class="block text-gray-700 text-sm font-bold mb-2">
+              Nombre de pages <span class="text-red-500 font-bold ml-2 text-lg">{{nbpages}}</span>
+            </label>
+            <input type="number" formControlName="nbpages" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline">
+          </div>
+          <div class="mb-3">
+            <label class="block text-gray-700 text-sm font-bold mb-2">
+              Listes des auteurs
+            </label>
+            <select formControlName="auteur_id" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline">
+              <option *ngFor="let item of listAuteurs" [value]="item.id">{{ item.name}}</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="block text-gray-700 text-sm font-bold mb-2">
+              Description du livre
+            </label>
+            <textarea formControlName="description" class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" rows="3"></textarea>
+          </div>
+          <div class="flex items-center justify-center">
+            <button (click)="sendForm()"
+            class="bg-pink-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button"
+            [disabled]="!form.valid"
+            >
+              AJouter
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

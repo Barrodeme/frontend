@@ -1,0 +1,46 @@
+<div class="flex flex-wrap justify-center " *ngIf="islogin">
+  <div class="flex justify-center m-3">
+    <div class="block rounded-lg shadow-lg bg-white max-w-sm text-center">
+      <div class="py-3 px-6 border-b border-pink-300 text-xl font-bold">
+        Auteurs
+      </div>
+      <div class="p-6">
+        <p class="text-gray-700 text-base mb-4">
+          Pour gerer tous les auteurs
+        </p>
+        <p>
+          User: lire,lister
+        </p>
+        <p class="mb-4">
+          Admin: editer,creer,supprimer et lister
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-center m-3">
+    <div class="block rounded-lg shadow-lg bg-white max-w-sm text-center">
+      <div class="py-3 px-6 border-b border-pink-300 text-xl font-bold">
+        Livres
+      </div>
+      <div class="p-6">
+        <p class="text-gray-700 text-base mb-4">
+          Pour gerer tous les livres
+        </p>
+        <p>
+          User: lire,lister
+        </p>
+        <p class="mb-4">
+          Admin: editer,creer,supprimer et lister
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="flex flex-col items-center bg-white m-12 p-4 w-auto mx-auto" *ngIf="!islogin">
+  <h1 class="text-5xl text-black text-center font-hairline">Bienvenue sur le gestionnaire des Livres</h1>
+  <button class="ml-4 bg-pink-500 text-xl mt-4 font-bold w-1/5 py-2 rounded-lg text-white"
+    (click)="login()">Connexion</button>
+</div>

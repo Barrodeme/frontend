@@ -1,0 +1,81 @@
+
+
+<div class="flex flex-grow  justify-center mb-4">
+  <div *ngIf="show" class="text-center w-full bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+    <strong class="font-bold text-sm">INFO:</strong>
+    <span class="block sm:inline ml-2">{{message}}.</span>
+    <span (click)="close()" class="absolute top-0 bottom-0 right-0 -px-4 py-3">
+      <svg class="fill-current h-6 w-10 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+    </span>
+  </div>
+</div>
+<h1 class="text-4xl m-8 font-bold text-center">Les Livres des auteurs</h1>
+<div class=" flex justify-center mb-8 mt-4">
+  <a *ngIf="isAdmin()" [routerLink]="['/create-livre']"  class="bg-pink-500 text-white hover:bg-pink-400 font-bold py-2 px-4 rounded inline-flex items-center">
+    <span>AJouter un livre</span>
+  </a>
+
+</div>
+<div class="container flex justify-center mx-auto">
+  <div class="flex flex-col">
+      <div class="w-full">
+          <div class="border border-black border-solid shadow">
+              <table class="divide-y divide-black-300 text-center" aria-describedby="mydesc">
+                  <thead class="bg-white">
+                      <tr>
+                          <th class="px-6 py-2 text-xs text-black-500">
+                              Ordre
+                          </th>
+                          <th rowspan="2" class="px-6 py-2 text-xs text-black-500">
+                            Titre(s) de livre(s)
+                          </th>
+                          <th class="px-6 py-2 text-xs text-black-500">
+                            Nom auteur
+                        </th>
+                          <th class="px-6 py-2 text-xs text-black-500" rowspan="3">
+                            Actcions
+                          </th>
+                      </tr>
+                  </thead>
+                  <tbody class="bg-white divide-y divide-black-300 text-center" *ngFor="let item of listLivres; index as id;">
+
+                          <td class="px-6 py-4 text-sm text-black-500">
+                             {{id+1}}
+                          </td>
+
+                            <td class="px-6 py-5 flex  justify-between"  *ngFor="let items of item.livreModels" >
+                              <p>
+                                {{items.titre }}
+                              </p>
+                          </td>
+                          <td class="px-6 py-4" rowspan="2">
+                            <div class="text-sm text-black-900">
+                              {{item.name}}
+                            </div>
+                        </td>
+                          <td class="px-6 py-5 flex  justify-between"  *ngFor="let items of item.livreModels">
+
+                            <img (click)="livreDetails(items.id, item.name)" class="h-6 text-pink-500 mx-3" src="https://www.svgrepo.com/show/11617/eye.svg" alt="">
+
+                            <a (click)="editlivre(items.id, item.name)" *ngIf="isAdmin()">
+                                  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-400 mx-6" fill="none"
+                                      viewBox="0 0 24 24" stroke="currentColor">
+                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                  </svg>
+                              </a>
+
+                              <a (click)="deletelivre(items.id)" *ngIf="isAdmin()">
+                                  <svg xmlns="https://www.svgrepo.com/show/11617/eye.svg" class="w-6 h-6 text-red-400" fill="none"
+                                      viewBox="0 0 24 24" stroke="currentColor">
+                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                  </svg>
+                              </a>
+                          </td>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>
